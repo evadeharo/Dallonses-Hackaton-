@@ -56,9 +56,45 @@ export default function App() {
         />
       </audio>
       <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
-        <div style={{ width: 100, height: 200, backgroundColor: "red" }} />
-        <div style={{ width: 100, height: 200, backgroundColor: "blue" }} />
-        <div style={{ width: 100, height: 200, backgroundColor: "green" }} />
+        <div
+          style={{
+            width: 100,
+            height: 200,
+            backgroundColor: "red",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {firstNumber ?? 0}
+        </div>
+        <div
+          style={{
+            width: 100,
+            height: 200,
+            backgroundColor: "blue",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {secondNumber ?? 0}
+        </div>
+        <div
+          style={{
+            width: 100,
+            height: 200,
+            backgroundColor: "green",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {percentage ? "%" : ""}
+        </div>
       </div>
     </div>
   );
