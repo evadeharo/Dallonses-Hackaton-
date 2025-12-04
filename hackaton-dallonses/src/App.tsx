@@ -37,7 +37,7 @@ export default function App() {
   audio.controls = false;
 
   return (
-    <>
+    <div style={{ width: "100%", height: "100%" }}>
       <h1>{firstNumber}</h1>
       <div className="card">
         <button onClick={startRoulette}>Random number</button>
@@ -48,19 +48,18 @@ export default function App() {
       <p className="read-the-docs">
         {firstNumber ?? 0} - {secondNumber ?? 0} {percentage ? "%" : ""}
       </p>
-      <div style={{ width: "100%", height: "100%" }}>
-        <audio controls>
-          <source
-            src="https://media.dallonses.com/hackaton/dimoni.mp3"
-            type="audio/mpeg"
-          />
-        </audio>
-        <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
-          <div style={{ width: 100, height: 200, backgroundColor: "red" }} />
-          <div style={{ width: 100, height: 200, backgroundColor: "blue" }} />
-          <div style={{ width: 100, height: 200, backgroundColor: "green" }} />
-        </div>
+
+      <audio controls>
+        <source
+          src="https://media.dallonses.com/hackaton/dimoni.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
+      <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
+        <div style={{ width: 100, height: 200, backgroundColor: "red" }} />
+        <div style={{ width: 100, height: 200, backgroundColor: "blue" }} />
+        <div style={{ width: 100, height: 200, backgroundColor: "green" }} />
       </div>
-    </>
+    </div>
   );
 }
