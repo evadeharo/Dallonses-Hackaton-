@@ -3,6 +3,7 @@ import data from "./data.json";
 
 export default function App() {
   const { part1, part2, part3, part4 } = data;
+  
   return (
     <main style={{ display: "flex", flexWrap: "wrap" }}>
       <div
@@ -43,7 +44,26 @@ export default function App() {
           position: "relative",
         }}
       >
-        part 2
+        <div
+        style={{
+          width: "40vw",
+          height: "45vh",
+          backgroundColor: "peru",
+          position: "relative",
+        }}
+      >
+        {data.part2.map((i) => 
+          <span
+          key={i.y}
+            style={{ position: "absolute", left: i.x *100, bottom: i.y*100 }}
+          >{`<3`}</span>
+        )}
+
+        <span style={{ position: "absolute", left: "0", bottom: "0" }}>0</span>
+        <span style={{ position: "absolute", left: "95%", bottom: "95%" }}>
+          100
+        </span>
+      </div>
         <span style={{ position: "absolute", left: "0", bottom: "0" }}>0</span>
         <span style={{ position: "absolute", left: "95%", bottom: "95%" }}>
           100
