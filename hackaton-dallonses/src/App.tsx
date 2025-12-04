@@ -55,8 +55,8 @@ export default function App() {
         {data.part2.map((i) => 
           <span
           key={i.y}
-            style={{ position: "absolute", left: i.x *100, bottom: i.y*100 }}
-          >{`<3`}</span>
+            style={{ position: "absolute", left: i.x *100, bottom: i.y*100, width: i.size, height: i.size, backgroundColor: "black", borderRadius: "50%" }}
+         />
         )}
 
         <span style={{ position: "absolute", left: "0", bottom: "0" }}>0</span>
@@ -77,18 +77,11 @@ export default function App() {
           position: "relative",
         }}
       >
-        {part3.map((i) => (
-          <div
-            style={{
-              position: "absolute",
-              left: i.x * 100,
-              bottom: i.y * 100,
-              width: i.size,
-              height: i.size,
-              backgroundColor: "red",
-            }}
-          />
-        ))}
+        part 3
+        <span style={{ position: "absolute", left: "0", bottom: "0" }}>0</span>
+        <span style={{ position: "absolute", left: "95%", bottom: "95%" }}>
+          100
+        </span>
       </div>
       <div
         style={{
@@ -98,23 +91,7 @@ export default function App() {
           position: "relative",
         }}
       >
-        {part4.map((p, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              left: `${p.x * 100}%`,
-              top: `${p.y * 100}%`,
-              width: p.height,
-              height: p.width,
-              backgroundColor: "black",
-              borderRadius: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
-            {""}
-          </div>
-        ))}
+        part 4
         <span style={{ position: "absolute", left: "0", bottom: "0" }}>0</span>
         <span style={{ position: "absolute", left: "95%", bottom: "95%" }}>
           100
