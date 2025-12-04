@@ -30,10 +30,11 @@ export default function App() {
     }
   };
 
-  const audio = document.querySelector("audio");
+  // const audio = document.querySelector("audio");
+  // if (!audio) return;
 
-  audio.volume = 0.9;
-  audio.controls = false;
+  // audio.volume = 0.9;
+  // audio.controls = false;
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
