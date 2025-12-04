@@ -3,54 +3,62 @@ import "./App.css";
 
 export default function App() {
   const [firstNumber, setFirstNumber] = useState<number | undefined>(undefined);
-  const [firstNumberLoading, setFirstNumberLoading] = useState<boolean>(true);
-  const [secondNumberLoading, setSecondNumberLoading] =
-    useState<boolean>(false);
   const [secondNumber, setSecondNumber] = useState<number | undefined>(
     undefined
   );
+
+  const [firstNumberLoading, setFirstNumberLoading] = useState<boolean>(true);
+  const [secondNumberLoading, setSecondNumberLoading] =
+    useState<boolean>(false);
+
   const [percentage, setPercentage] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const getRandomInt = (max: number) => {
-    return Math.floor(Math.random() * max);
+    return Math.floor(Math.random() * max); // 0..max-1
   };
 
+  // Spin first number while firstNumberLoading is true
   useEffect(() => {
-    while (firstNumberLoading) {
-      setTimeout(() => {
-        setFirstNumber(getRandomInt(9));
-      }, 300);
-    }
+    if (!firstNumberLoading) return;
+
+    const intervalId = setInterval(() => {
+      setFirstNumber(getRandomInt(10)); // 0..9
+    }, 300);
+
+    return () => clearInterval(intervalId);
   }, [firstNumberLoading]);
 
+  // Spin second number while secondNumberLoading is true
   useEffect(() => {
-    while (secondNumberLoading) {
-      setTimeout(() => {
-        setSecondNumber(getRandomInt(9));
-      }, 300);
-    }
+    if (!secondNumberLoading) return;
+
+    const intervalId = setInterval(() => {
+      setSecondNumber(getRandomInt(10)); // 0..9
+    }, 300);
+
+    return () => clearInterval(intervalId);
   }, [secondNumberLoading]);
 
   const startRoulette = () => {
+    // 1st click: stop first, start second
     if (firstNumberLoading) {
       setFirstNumberLoading(false);
       setSecondNumberLoading(true);
       return;
     }
+
+    // 2nd click: stop second
     if (secondNumberLoading) {
       setSecondNumberLoading(false);
-      setFirstNumberLoading(false);
       return;
     }
 
-    if (!secondNumberLoading && !firstNumberLoading) {
-      const randomVal = getRandomInt(10);
-      if (randomVal > 8) {
-        setPercentage(true);
-      } else {
-        setPercentage(false);
-      }
+    // 3rd click (both stopped): decide percentage and restart first
+    if (!firstNumberLoading && !secondNumberLoading) {
+      const randomVal = getRandomInt(10); // 0..9
+      setPercentage(randomVal > 8); // 10% chance
+
+      // start again with first spinning
       setFirstNumberLoading(true);
       setSecondNumberLoading(false);
     }
@@ -67,9 +75,6 @@ export default function App() {
       <h1>{firstNumber}</h1>
       <div className="card">
         <button onClick={startRoulette}>Random number</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
       <p className="read-the-docs">
         {firstNumber ?? 0} - {secondNumber ?? 0} {percentage ? "%" : ""}
