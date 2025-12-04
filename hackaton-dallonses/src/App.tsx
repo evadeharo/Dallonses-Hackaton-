@@ -56,8 +56,14 @@ export default function App() {
     }
   };
 
+  // const audio = document.querySelector("audio");
+  // if (!audio) return;
+
+  // audio.volume = 0.9;
+  // audio.controls = false;
+
   return (
-    <>
+    <div style={{ width: "100%", height: "100%" }}>
       <h1>{firstNumber}</h1>
       <div className="card">
         <button onClick={startRoulette}>Random number</button>
@@ -68,6 +74,54 @@ export default function App() {
       <p className="read-the-docs">
         {firstNumber ?? 0} - {secondNumber ?? 0} {percentage ? "%" : ""}
       </p>
-    </>
+
+      <audio controls>
+        <source
+          src="https://media.dallonses.com/hackaton/dimoni.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
+      <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
+        <div
+          style={{
+            width: 100,
+            height: 200,
+            backgroundColor: "red",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {firstNumber ?? 0}
+        </div>
+        <div
+          style={{
+            width: 100,
+            height: 200,
+            backgroundColor: "blue",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {secondNumber ?? 0}
+        </div>
+        <div
+          style={{
+            width: 100,
+            height: 200,
+            backgroundColor: "green",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {percentage ? "%" : ""}
+        </div>
+      </div>
+    </div>
   );
 }
