@@ -1,6 +1,8 @@
 import "./App.css";
+import data from "./data.json";
 
 export default function App() {
+  const { part1, part2, part3, part4 } = data;
   return (
     <main style={{ display: "flex", flexWrap: "wrap" }}>
       <div
@@ -38,11 +40,18 @@ export default function App() {
           position: "relative",
         }}
       >
-        part 3
-        <span style={{ position: "absolute", left: "0", bottom: "0" }}>0</span>
-        <span style={{ position: "absolute", left: "95%", bottom: "95%" }}>
-          100
-        </span>
+        {part3.map((i) => (
+          <div
+            style={{
+              position: "absolute",
+              left: i.x * 100,
+              bottom: i.y * 100,
+              width: i.size,
+              height: i.size,
+              backgroundColor: "red",
+            }}
+          />
+        ))}
       </div>
       <div
         style={{
